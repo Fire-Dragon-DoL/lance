@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-RUBY_VERSION="$(basename "$PWD/bundle/ruby/*")"
+export RUBY_VERSION="$(basename $PWD/bundle/ruby/*)"
 export GEM_HOME="$PWD/bundle/ruby/$RUBY_VERSION"
 export GEM_PATH="$GEM_HOME"
 export PATH="$PWD/bundle/ruby/$RUBY_VERSION/bin:$PATH"

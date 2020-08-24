@@ -14,15 +14,37 @@ gem 'lance'
 
 And then execute:
 
-    $ bundle install
+```bash
+$ bundle install
+```
 
 Or install it yourself as:
 
-    $ gem install lance
+```bash
+$ gem install lance
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+### Draft
+
+```ruby
+class Log
+  include ::Lance::Something
+end
+
+log = ::Lance::Log.build(STDOUT)
+log.renderer = ::Lance::Renderer.build
+log.filter = ::Lance::Filter.build
+
+msg = log.build_message
+
+msg.info("Foo", tags: [:some, :tags])
+
+log.tags(:foo).info("message")
+log.info(["message", field1: 123], tags: [:foo])
+log.tags(:foo).info("message", foo: 123, bar: "ooo")
+```
 
 ## Development
 
@@ -33,4 +55,3 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/lance.
-

@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require_relative "../load_path"
+
+require "lance"
+require "pry-byebug"
+
+Pry.start

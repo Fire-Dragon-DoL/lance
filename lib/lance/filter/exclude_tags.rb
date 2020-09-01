@@ -1,6 +1,6 @@
 module Lance
   class Filter
-    class MinOneTag
+    class ExcludeTags
       def initialize(tags)
         @tags = tags
       end
@@ -9,10 +9,10 @@ module Lance
         message_tags = message.metadata(:tags)
 
         if @tags.intersect?(message_tags)
-          return :include
+          return :exclude
         end
 
-        :exclude
+        :include
       end
     end
   end

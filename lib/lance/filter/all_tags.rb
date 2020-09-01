@@ -1,6 +1,6 @@
 module Lance
   class Filter
-    class MinOneTag
+    class AllTags
       def initialize(tags)
         @tags = tags
       end
@@ -8,7 +8,7 @@ module Lance
       def call(message)
         message_tags = message.metadata(:tags)
 
-        if @tags.intersect?(message_tags)
+        if @tags.superset?(message_tags)
           return :include
         end
 

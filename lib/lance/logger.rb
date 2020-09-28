@@ -9,7 +9,7 @@ module Lance
 
     # dependency session?
     dependency :output, ::Lance::Output::Console
-    dependency :refine
+    dependency :refine, ::Lance::Refine::Multiple
 
     configure :logger
 

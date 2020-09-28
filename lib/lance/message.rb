@@ -11,24 +11,16 @@ module Lance
       @metadata = metadata
     end
 
-    def tags
-      metadata.fetch(:tags) { [] }
+    def put(key, value)
+      metadata[key] = value
     end
 
-    def level
-      metadata.fetch(:level) { :trace }
+    def get(key)
+      metadata[key]
     end
 
-    def to_s
-      render.(self)
-    end
-
-    def render
-      @render ||= ::Lance::Render.new
-    end
-
-    def filter
-      @filter ||= ::Lance::Filter.new
+    def fetch(key)
+      metadata.fetch(key)
     end
   end
 end

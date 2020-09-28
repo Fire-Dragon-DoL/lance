@@ -24,6 +24,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "evt-identifier-uuid", ">= 2"
+  spec.add_dependency "evt-dependency", ">= 2"
+  spec.add_dependency "evt-configure", ">= 2"
+  spec.add_dependency "evt-telemetry", ">= 2"
 
   spec.add_development_dependency "pry-byebug", ">= 3"
   spec.add_development_dependency "test_bench", ">= 1"

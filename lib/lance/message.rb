@@ -3,10 +3,7 @@ module Lance
     attr_accessor :content
     attr_accessor :metadata
 
-    attr_writer :render
-    attr_writer :filter
-
-    def initialize(content, metadata = {})
+    def initialize(content, **metadata)
       @content = content
       @metadata = metadata
     end

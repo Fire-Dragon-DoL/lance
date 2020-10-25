@@ -1,16 +1,22 @@
 module Lance
   module Refine
     class Multiple
-      def self.build(*refiners)
-        refiners = Array(refiners)
-
-        instance = new
-
-        refiners.each do |refine|
-          instance.register(refine)
+      module Substitute
+        def self.build
+          Multiple.new
         end
+      end
 
-        instance
+      def initialize(*refiners)
+        @refiners = refiners
+      end
+
+      def self.build(*refiners)
+        new(*refiners)
+      end
+
+      def self.configure(instance, *refiners)
+        instance.refine = build(*refiners)
       end
 
       def call(message)

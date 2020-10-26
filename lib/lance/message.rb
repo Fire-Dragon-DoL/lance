@@ -10,6 +10,7 @@ module Lance
 
     def put(key, value)
       metadata[key] = value
+      self
     end
 
     def get(key)

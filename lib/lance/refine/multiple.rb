@@ -1,26 +1,39 @@
+require "lance/refine/nothing"
+require "lance/refine/session"
+
 module Lance
   module Refine
     class Multiple
       module Substitute
         def self.build
-          Multiple.new
+          Nothing.build
         end
       end
 
-      def initialize(*refiners)
+      module Defaults
+        def self.refiners
+          [
+            Session.build
+          ]
+        end
+      end
+
+      def initialize(refiners = [])
         @refiners = refiners
       end
 
-      def self.build(*refiners)
-        new(*refiners)
+      def self.build(refiners = nil)
+        refiners ||= Defaults.refiners
+
+        new(refiners)
       end
 
-      def self.configure(instance, *refiners)
-        instance.refine = build(*refiners)
+      def self.configure(instance, refiners = nil)
+        instance.refine = build(refiners)
       end
 
       def call(message)
-        for refine in @refiners
+        for refine in refiners
           message = refine.(message)
         end
 

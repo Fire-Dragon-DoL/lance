@@ -8,9 +8,7 @@ module Lance
 
       def example(session: nil)
         ::Lance::Logger.new.tap do |instance|
-          refiners = []
-          refiners << session if !session.nil?
-          ::Lance::Refine::Multiple.configure(instance, *refiners)
+          ::Lance::Refine::Multiple.configure(instance)
         end
       end
     end

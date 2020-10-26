@@ -13,13 +13,10 @@ module Lance
 
     configure :logger
 
-    def self.build(session: nil)
+    def self.build
       new.tap do |instance|
-        refiners = []
-        refiners << session if !session.nil?
-
         ::Lance::Output::Console.configure(instance)
-        ::Lance::Refine::Multiple.configure(instance, *refiners)
+        ::Lance::Refine::Multiple.configure(instance)
       end
     end
 
